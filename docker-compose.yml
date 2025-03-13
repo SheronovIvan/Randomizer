@@ -1,10 +1,40 @@
-version: "3"
+version: '3.8'
 
 services:
-  bot:
-    build:
-      context: "."
-      dockerfile: Dockerfile
+  webapp:
+    build: ./app
     volumes:
-      - "/usr/src/app/:/app"
-    restart: always
+      - uploads:/app/uploads
+    environment:
+      - FLASK_ENV=production
+    networks:
+      - app-network
+
+  nginx:
+    build: ./nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - certbot-etc:/etc/nginx/ssl
+      - uploads:/app/uploads
+    depends_on:
+      - webapp
+    networks:
+      - app-network
+
+  certbot:
+    image: certbot/certbot
+    volumes:
+      - certbot-etc:/etc/letsencrypt
+    command: certonly --webroot --webroot-path=/var/www/html --email your@email.com --agree-tos --no-eff-email -d gos-bot.online -d www.gos-bot.online
+    networks:
+      - app-network
+
+volumes:
+  certbot-etc:
+  uploads:
+
+networks:
+  app-network:
+    driver: bridge
