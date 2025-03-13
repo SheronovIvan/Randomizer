@@ -5,7 +5,7 @@ from werkzeug.utils import secure_filename
 
 app = Flask(__name__)
 app.secret_key = "your_secret_key_here"
-app.config['MAX_CONTENT_LENGTH'] = 5 * 1024 * 1024
+app.config['MAX_CONTENT_LENGTH'] = 100 * 1024 * 1024
 app.config['UPLOAD_FOLDER'] = 'uploads'
 ALLOWED_EXTENSIONS = {'txt'}
 
@@ -15,10 +15,13 @@ def allowed_file(filename):
 def process_text(text):
     lines = [line.strip() for line in text.split('\n') if line.strip()]
     if len(lines) < 10:
-        raise ValueError("Нужно минимум 10 строк")
+        i = len(lines)
+        random.shuffle(lines)
+        return list(enumerate(lines[:i], start=1))
     random.shuffle(lines)
     # Возвращаем список кортежей (index, line)
     return list(enumerate(lines[:10], start=1))
+    
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
