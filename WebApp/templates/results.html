@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="bg-white dark:bg-gray-800 rounded-xl shadow-md p-6 space-y-6 fade-in">
+    <div class="text-center">
+        <h2 class="text-xl font-semibold text-gray-800 dark:text-gray-200 mb-4">
+            Результаты обработки
+        </h2>
+        <a href="/" class="text-blue-600 dark:text-blue-400 hover:underline">← Вернуться к загрузке</a>
+    </div>
+
+    <div class="space-y-3">
+        {% for item in session.result %}
+        <div class="p-4 bg-gray-50 dark:bg-gray-700 rounded-lg fade-in">
+            <div class="flex items-center">
+                <span class="w-8 text-blue-600 dark:text-blue-400 font-medium">#{{ item[0] }}</span>
+                <span class="text-gray-800 dark:text-gray-200">{{ item[1] }}</span>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

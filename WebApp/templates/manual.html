@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="bg-white dark:bg-gray-800 rounded-xl shadow-md p-6 space-y-6 fade-in">
+    <div class="text-center">
+        <h2 class="text-xl font-semibold text-gray-800 dark:text-gray-200 mb-2">
+            Введите текст для обработки
+        </h2>
+        <p class="text-gray-600 dark:text-gray-400 text-sm">
+            Минимум 10 строк, разделенных переносами
+        </p>
+    </div>
+
+    <form method="POST" class="space-y-4">
+        <textarea 
+            name="text" 
+            class="w-full h-64 p-4 bg-gray-50 dark:bg-gray-700 rounded-lg border border-gray-300 dark:border-gray-600 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:text-gray-200"
+            placeholder="Введите текст здесь..."
+            required
+        ></textarea>
+
+        <div class="flex justify-center space-x-4">
+            <button type="submit" class="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
+                Обработать
+            </button>
+            <a href="/" class="px-6 py-2 bg-gray-200 dark:bg-gray-600 text-gray-800 dark:text-gray-200 rounded-lg hover:bg-gray-300 dark:hover:bg-gray-500 transition-colors">
+                Назад
+            </a>
+        </div>
+    </form>
+
+    {% if session.error %}
+    <div class="p-4 bg-red-100 dark:bg-red-900 text-red-700 dark:text-red-200 rounded-lg fade-in">
+        {{ session.error }}
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

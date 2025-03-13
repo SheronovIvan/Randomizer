@@ -1,0 +1,20 @@
+FROM python:3.9-slim
+
+
+COPY . /usr/src/app
+WORKDIR /usr/src/app
+COPY init-letsencrypt.sh /usr/src/app/init-letsencrypt.sh
+
+
+
+
+RUN pip install --user sqlite3py
+RUN pip install --user flask
+RUN pip install --user waitress
+RUN pip install --user requests
+
+EXPOSE 6000
+
+# run app
+CMD ["python", "-m","waitress","--listen=0.0.0.0:6000","app:app"]
+

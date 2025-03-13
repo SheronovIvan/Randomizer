@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+body {
+    background-color: #121212;
+    color: white;
+    font-family: 'Roboto', Arial, sans-serif;
+}
+
+/* Логотип */
+.pm_logo {
+    clip-path: polygon(50% 0%, 100% 38%, 81% 90%, 19% 90%, 0% 38%);
+}
+
+.question-text1 {
+    font-size: clamp(1.5rem, 5vw, 3rem); /* Минимальный размер 1.5rem, максимум 3rem, и адаптация на основе 5% от ширины экрана */
+}
+/* Текст вопросов */
+.question-text {
+    font-size: 3em;
+    /* Новый размер текста */
+    text-align: center;
+    color: #f0f8ff;
+    /* Светлый цвет текста */
+    font-weight: bold;
+
+}
+
+/* Ссылки */
+.solution-link {
+    color: #007bff;
+    text-decoration: underline;
+}
+
+.solution-link:hover {
+    color: #0056b3;
+    text-decoration: none;
+}
+
+/* Центрирование элементов */
+.center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Стиль для кнопок ответов */
+.answer-button {
+    display: block;
+    background-color: #007bff;
+    color: white;
+    font-size: 2.5em;
+    /* Новый размер текста */
+    padding: 20px;
+    margin: 15px auto;
+    /* Центрируем кнопки */
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    text-align: center;
+    width: 90%;
+    /* Кнопки занимают фиксированную ширину */
+}
+
+/* Уменьшаем кнопку по ширине и увеличиваем отступы */
+.answer-button:not(:last-child) {
+    margin-bottom: 20px;
+}
+
+.answer-button:hover {
+    background-color: #218838;
+}
+
+/* Для кнопок в узкой ширине экрана */
+@media (max-width: 480px) {
+    .answer-button {
+        padding: 15px 40px;
+        /* Уменьшаем отступы для маленьких экранов */
+        font-size: 2em;
+        /* Уменьшаем размер текста */
+    }
+
+    .button {
+        font-size: 2em;
+        padding: 20px;
+        /* Уменьшаем размер кнопок */
+        margin: 20px 0;
+    }
+
+    .question-text {
+        font-size: 2.5em;
+        /* Уменьшаем размер шрифта для вопросов */
+    }
+
+    /* Если экран совсем маленький, уменьшаем масштаб */
+    .container {
+        transform: scale(5);
+        /* Масштабирование для маленьких экранов */
+    }
+}
