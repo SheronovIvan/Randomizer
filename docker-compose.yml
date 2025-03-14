@@ -2,15 +2,18 @@ version: '3.8'
 
 services:
   webapp:
+    image: ivansher/randomizer-app:latest
     build: ./app
     volumes:
       - uploads:/app/uploads
     environment:
       - FLASK_ENV=production
+      - FLASK_SECRET_KEY=334ersd
     networks:
       - app-network
 
   nginx:
+    image: ivansher/randomizer-nginx:latest
     build: ./nginx
     ports:
       - "80:80"
@@ -20,14 +23,6 @@ services:
       - uploads:/app/uploads
     depends_on:
       - webapp
-    networks:
-      - app-network
-
-  certbot:
-    image: certbot/certbot
-    volumes:
-      - certbot-etc:/etc/letsencrypt
-    command: certonly --webroot --webroot-path=/var/www/html --email your@email.com --agree-tos --no-eff-email -d gos-bot.online -d www.gos-bot.online
     networks:
       - app-network
 

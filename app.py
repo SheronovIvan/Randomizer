@@ -4,7 +4,7 @@ import random
 from werkzeug.utils import secure_filename
 
 app = Flask(__name__)
-app.secret_key = "your_secret_key_here"
+app.secret_key = "334ersd"
 app.config['MAX_CONTENT_LENGTH'] = 100 * 1024 * 1024
 app.config['UPLOAD_FOLDER'] = 'uploads'
 ALLOWED_EXTENSIONS = {'txt'}
