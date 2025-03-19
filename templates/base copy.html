@@ -10,23 +10,6 @@
             darkMode: 'class'
         }
     </script>
-    <!-- Стандартный favicon -->
-    <link rel="icon" type="image/x-icon" href="/favicon_io/favicon.ico">
-
-    <!-- Для современных браузеров (PNG) -->
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png">
-
-    <!-- Для Apple устройств (Apple Touch Icon) -->
-    <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png">
-
-    <!-- Для Android устройств -->
-    <link rel="icon" type="image/png" sizes="192x192" href="/favicon_io/android-chrome-192x192.png">
-    <link rel="icon" type="image/png" sizes="512x512" href="/favicon_io/android-chrome-512x512.png">
-
-
-    <!-- Manifest для PWA (если используется) -->
-    <link rel="manifest" href="/favicon_io/site.webmanifest">
     <style>
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(10px); }
@@ -42,13 +25,8 @@
             @apply absolute bottom-0 left-0 w-full h-0.5 bg-blue-500 dark:bg-blue-400;
             content: '';
         }
-    
-        /* Исправление text-size-adjust */
-        html {
-            text-size-adjust: 100%;
-        }
     </style>
-    
+    <link rel="icon" type="image/x-icon" href="/favicon_io/favicon.ico">
 </head>
 
 <body class="flex flex-col min-h-screen bg-gray-50 dark:bg-gray-900">
@@ -66,7 +44,7 @@
                     </a>
                 </div>
                 
-                <button id="theme-toggle" class="p-2 rounded-lg bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors" title="Переключить тему">
+                <button id="theme-toggle" class="p-2 rounded-lg bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors">
                     <svg id="sun-icon" class="w-6 h-6 text-blue-500 hidden dark:block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z" />
 

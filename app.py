@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, session, redirect, url_for
+from flask import Flask, render_template, request, session, redirect, url_for, send_from_directory
 import os
 import random
 from werkzeug.utils import secure_filename
@@ -11,6 +11,16 @@ ALLOWED_EXTENSIONS = {'txt'}
 
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+
+@app.route('/favicon_io/<path:filename>')
+def favicon(filename):
+    response = send_from_directory(os.path.join(app.root_path, 'favicon_io'), filename)
+    response.headers['Cache-Control'] = 'no-cache, no-store, must-revalidate'
+    response.headers['Pragma'] = 'no-cache'
+    response.headers['Expires'] = '0'
+    response.headers['X-Content-Type-Options'] = 'nosniff'
+    response.headers['Content-Type'] = 'application/octet-stream; charset=utf-8'
+    return response
 
 def process_text(text):
     lines = [line.strip() for line in text.split('\n') if line.strip()]
